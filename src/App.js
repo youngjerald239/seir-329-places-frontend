@@ -24,7 +24,7 @@ const [selectedPlace, setSelectedPlace] = React.useState(emptyPlace)
 // Function to get list of all Places
 const getPlaces = () => {
   // make a get request to this url
-  fetch(url + "/place/")
+  fetch(url + "/places/")
   //use .then to take action when the response comes in
   //convert data into js object
   .then((response) => response.json())
@@ -41,7 +41,7 @@ React.useEffect(() => {
 
 //handleCreate - function for when the create form is submitted
 const handleCreate = (newPlace) => {
-  fetch(url + "/place/", {
+  fetch(url + "/places/", {
     method: "POST", 
     headers: {
       "Content-Type": "application/json"
@@ -54,7 +54,7 @@ const handleCreate = (newPlace) => {
 
 //handleUpdate  - function for when the edit form is submitted
 const handleUpdate = (place) => {
-  fetch(url + "/place/" + place._id, {
+  fetch(url + "/places/" + place._id, {
     method: "PUT",
     headers:{
       "Content-Type":"application/json"
@@ -71,7 +71,7 @@ const selectPlace = (place) => {
 
 // deletePlace to delete individual Places
 const deletePlace = (place) => {
-  fetch(url + "/place/" + place._id, {
+  fetch(url + "/places/" + place._id, {
     method: "delete"
   })
   .then(() => {
@@ -120,7 +120,8 @@ const deletePlace = (place) => {
               {...rp} 
               label="update" 
               place={selectedPlace} 
-              handleSubmit={handleUpdate} />
+              handleSubmit={handleUpdate} 
+              />
             )}
           />
         </Switch>
